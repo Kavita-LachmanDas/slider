@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+     
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            margin-top: 5%;
+        }
+
+        .slider img {
+            width: 100%;
+            
+        }
+
+        .card {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .card img {
+            width: 200px;
+            height: 200px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .card img:hover {
+            border-color: #333;
+        }
+
+        .left-arrow, .right-arrow {
+            position: absolute;
+            top: 50%;
+            font-size: 2rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .left-arrow {
+            left: 10px;
+            transform: translateY(-50%);
+        }
+
+        .right-arrow {
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+   
+  <div class="slider">
+    <img 
+    id="slider-img"
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9gfo-wLbnDAL8OrY_IO5fB6ZDgtmGu0pEgQ&s" alt="Slider Image">
+
+    <div onclick="prev()" class="left-arrow"><i class="fa-solid fa-less-than"></i></div>
+    <div onclick="next()" class="right-arrow"><i class="fa-solid fa-greater-than"></i></div>
+  </div>
+
+  <div class="card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9gfo-wLbnDAL8OrY_IO5fB6ZDgtmGu0pEgQ&s" onclick="changeImage(this)" alt="Thumbnail 1">
+    <img src="https://docket.kartmax.in/sites/9s145MyZrWdIAwpU0JYS/product-images/sky_blue_organza_designer_gown_1727351246tt_1117_as3083134.jpg" onclick="changeImage(this)" alt="Thumbnail 2">
+    <img src="https://preeto.pk/cdn/shop/products/KUFTAN4.jpg?v=1676985052" onclick="changeImage(this)" alt="Thumbnail 3">
+  </div>
+
+  <script>
+    function changeImage(thumbnail) {
+      // phele meine ase get kiye then ase image slider mein as a thumbnail set kiya
+      document.getElementById("slider-img").src = thumbnail.src;
+    }
+
+  //  aarows ke liye function bnaya 
+    let currentIndex = 0;
+    const images = [
+      "https://wowslider.com/sliders/demo-18/data1/images/hongkong1081704.jpg",
+      "https://docket.kartmax.in/sites/9s145MyZrWdIAwpU0JYS/product-images/sky_blue_organza_designer_gown_1727351246tt_1117_as3083134.jpg",
+      "https://preeto.pk/cdn/shop/products/KUFTAN4.jpg?v=1676985052"
+    ];
+
+    function prev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      document.getElementById("slider-img").src = images[currentIndex];
+    }
+
+    function next() {
+      currentIndex = (currentIndex + 1) % images.length;
+      document.getElementById("slider-img").src = images[currentIndex];
+    }
+  </script>
+
+</body>
+</html>
